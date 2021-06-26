@@ -1,10 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBikeTheftDto } from './dto/create-bike-theft.dto';
 import { UpdateBikeTheftDto } from './dto/update-bike-theft.dto';
+import { BikeTheft, BikeTheftStatus } from './entities/bike-theft.entity';
 
 @Injectable()
 export class BikeTheftsService {
   create(createBikeTheftDto: CreateBikeTheftDto) {
+    
+    const bikeTheft: BikeTheft = {
+      ...createBikeTheftDto, 
+      caseStatus: BikeTheftStatus.UNASSIGNED
+    };
     return 'This action adds a new bikeTheft';
   }
 

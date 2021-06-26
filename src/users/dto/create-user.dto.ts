@@ -7,7 +7,7 @@ export class CreateUserDto {
     @IsAlpha()
     @MaxLength(100)
     name: string;
-    @ApiProperty({required: false}) 
+    @ApiProperty({example: 'Smith', required: false}) 
     @IsAlpha()
     @MaxLength(200)
     surnames?: string;

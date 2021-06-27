@@ -8,6 +8,6 @@ export class User {
     name: string;
     @Column()
     surnames?: string;
-    @Column()
+    @Column({unique: true})
     email: string;
 }

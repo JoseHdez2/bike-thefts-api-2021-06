@@ -26,6 +26,6 @@ export enum BikeTheftStatus {
     UNASSIGNED = 0,
     ASSIGNED = 1,
     IN_PROGRESS = 2,
-    SOLVED = 3,
+    RESOLVED = 3,
     REJECTED = 4,
 }

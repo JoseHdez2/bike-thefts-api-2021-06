@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { QueryFailedError, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 
@@ -30,8 +30,15 @@ export class UsersService {
     }
 
     create(user: CreateUserDto): Promise<User> {
-        const newUser = this.usersRepository.create({ id: Date.now(), ...user });
-        return this.usersRepository.save(newUser);
+        try {
+            const newUser = this.usersRepository.create({ id: Date.now(), ...user });
+            return this.usersRepository.save(newUser);
+        } catch (err) {
+            if(err instanceof QueryFailedError){
+                console.log(err);
+            }
+            throw err;
+        }
     }
 
     async update(id: number, dto: CreateUserDto): Promise<User> {

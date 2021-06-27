@@ -12,15 +12,15 @@ export class UsersController {
   @ApiOkResponse()
   @ApiQuery({name: 'name', required: false})
   @Get()
-  getUsers(@Query('name') name?: string): User[] {
+  getUsers(@Query('name') name?: string): Promise<User[]> {
     return this.usersService.findAll(name);
   }
 
   @ApiOkResponse({type: User})
   @ApiNotFoundResponse()
   @Get(':id')
-  getUserById(@Param('id', ParseIntPipe) id: number): User {
-    const user = this.usersService.findById(id);
+  async getUserById(@Param('id', ParseIntPipe) id: number): Promise<User> {
+    const user: User = await this.usersService.findById(id);
 
     if(!user) {
       throw new NotFoundException(`User with id ${id} not found.`);
@@ -32,7 +32,7 @@ export class UsersController {
   @ApiCreatedResponse({type: User})
   @ApiBadRequestResponse()
   @Post()
-  createUser(@Body() body: CreateUserDto): User {
+  createUser(@Body() body: CreateUserDto): Promise<User> {
     return this.usersService.create(body);
   }
 }

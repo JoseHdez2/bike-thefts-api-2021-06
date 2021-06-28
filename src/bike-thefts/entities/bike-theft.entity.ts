@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/users/entities/user.entity";
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class BikeTheft {
@@ -18,8 +19,12 @@ export class BikeTheft {
     theftDescription?: string;
     @Column()
     theftAddress?: string;
+    
     @Column()
     caseStatus: BikeTheftStatus;
+
+    @OneToOne(type => User, pd => pd.id)
+    assignedPoliceOfficer?: User;
 }
 
 export enum BikeTheftStatus {

@@ -28,7 +28,7 @@ export class BikeTheft {
 }
 
 export enum BikeTheftStatus {
-    UNASSIGNED = 0,
+    REPORTED = 0,
     ASSIGNED = 1,
     IN_PROGRESS = 2,
     RESOLVED = 3,

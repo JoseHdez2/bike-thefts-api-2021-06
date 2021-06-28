@@ -22,8 +22,7 @@ export class UsersService {
     
     async findById(id: number): Promise<User> {
         try {
-            const user = await this.usersRepository.findOneOrFail(id);
-            return user;
+            return await this.usersRepository.findOneOrFail(id);
         } catch (err) {
             throw err;
         }

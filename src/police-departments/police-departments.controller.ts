@@ -29,6 +29,11 @@ export class PoliceDepartmentsController {
     return this.policeDepartmentsService.update(+id, updatePoliceDepartmentDto);
   }
 
+  @Post(':id/assign/:uid')
+  assignUser(@Param('id') id: string, @Param('uid') userId: string) {
+    return this.policeDepartmentsService.assignPoliceOfficer(+id, +userId);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.policeDepartmentsService.remove(+id);

@@ -10,5 +10,5 @@ export class PoliceDepartment {
     name: string;
 
     @OneToMany(type => User, u => u.policeDepartment)
-    policeOfficerIds: User[];
+    policeOfficers: User[];
 }

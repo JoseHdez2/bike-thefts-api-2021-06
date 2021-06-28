@@ -33,4 +33,5 @@ export enum BikeTheftStatus {
     IN_PROGRESS = 2,
     RESOLVED = 3,
     REJECTED = 4,
+    DELETED = 5,
 }

@@ -23,11 +23,11 @@ export class CreateBikeTheftDto {
     @ApiProperty({example: '2021-06-28', required: false})
     theftDate?: Date;
     
-    @ApiProperty({example: 'I stopped for a coffee for 5 minutes and when I came back my bike was gone.', required: false})
+    @ApiProperty({example: 'I stopped for a coffee for 5 minutes, and when I came back, my bike was gone.', required: false})
     @MaxLength(1000)
     theftDescription?: string;
     
-    @ApiProperty({example: 'I stopped for a coffee for 5 minutes and when I came back my bike was gone.', required: false})
+    @ApiProperty({example: 'New York City, 5th Avenue', required: false})
     @MaxLength(500)
     theftAddress?: string;
 }

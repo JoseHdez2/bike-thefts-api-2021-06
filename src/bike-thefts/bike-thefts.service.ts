@@ -14,11 +14,13 @@ export class BikeTheftsService {
     private bikeTheftEventService: BikeTheftEventsService
   ) {}
 
-  create(createBikeTheftDto: CreateBikeTheftDto) {
+  async create(createBikeTheftDto: CreateBikeTheftDto) {
     try {
       const bikeTheft = this.bikeTheftsRepository.create({ ...createBikeTheftDto, caseStatus: BikeTheftStatus.REPORTED});
-      this.createEvent(bikeTheft);
-      return this.bikeTheftsRepository.save(bikeTheft);
+      const savedBikeTheft = await this.bikeTheftsRepository.save(bikeTheft);
+      console.log(savedBikeTheft);
+      this.createEvent(savedBikeTheft);
+      return savedBikeTheft;
     } catch (err) {
         if(err instanceof QueryFailedError){
             console.log(err);
@@ -49,6 +51,6 @@ export class BikeTheftsService {
   }
 
   private createEvent(bikeTheft: BikeTheft) {
-    this.bikeTheftEventService.create({bikeTheftId: bikeTheft.id, userId: bikeTheft.assignedPoliceOfficer.id, caseStatus: bikeTheft.caseStatus});
+    this.bikeTheftEventService.create({bikeTheftId: bikeTheft?.id, userId: bikeTheft.assignedPoliceOfficer.id, caseStatus: bikeTheft.caseStatus});
   }
 }

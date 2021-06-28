@@ -32,7 +32,13 @@ export class UsersController {
   @ApiCreatedResponse({type: User})
   @ApiBadRequestResponse()
   @Post()
-  createUser(@Body() body: CreateUserDto): Promise<User> {
+  async createUser(@Body() body: CreateUserDto): Promise<User> {
+    // const userByEmail: User = await this.usersService.findAll();
+
+    // if(!userByEmail) {
+    //   throw new NotFoundException(`User with id ${id} not found.`);
+    // }
+
     return this.usersService.create(body);
   }
 }

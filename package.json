@@ -36,6 +36,7 @@
     "rxjs": "^6.6.6",
     "sqlite3": "^5.0.2",
     "swagger-ui-express": "^4.1.6",
+    "to-json-schema": "^0.2.5",
     "typeorm": "^0.2.34"
   },
   "devDependencies": {

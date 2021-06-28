@@ -1,1 +1,3 @@
-export class CreatePoliceDepartmentDto {}
+export class CreatePoliceDepartmentDto {
+    name: string;
+}

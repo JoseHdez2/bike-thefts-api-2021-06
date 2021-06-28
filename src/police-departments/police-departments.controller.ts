@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PoliceDepartmentsService } from './police-departments.service';
 import { CreatePoliceDepartmentDto } from './dto/create-police-department.dto';
 import { UpdatePoliceDepartmentDto } from './dto/update-police-department.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('police-departments')
 @Controller('police-departments')
 export class PoliceDepartmentsController {
   constructor(private readonly policeDepartmentsService: PoliceDepartmentsService) {}
